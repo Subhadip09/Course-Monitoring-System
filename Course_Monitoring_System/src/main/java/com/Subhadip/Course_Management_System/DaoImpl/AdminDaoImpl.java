@@ -1,5 +1,7 @@
 package com.Subhadip.Course_Management_System.DaoImpl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -65,6 +67,24 @@ public class AdminDaoImpl implements AdminDao{
 		update.setName(newName);
 		update.setFees(newFees);
 		update.setDescription(newDesc);
+		em.getTransaction().commit();
+		em.close();
+		return null;
+	}
+
+	@Override
+	public List<Course> viewCourse() {
+		// TODO Auto-generated method stub
+		EntityManager em = Dao.provideConnection();
+		em.getTransaction().begin();
+		
+		Query query = em.createQuery("select c from Course c");
+		List<Course> list = query.getResultList();
+		
+		for(Course c : list)
+		{
+			System.out.println(c);
+		}
 		em.getTransaction().commit();
 		em.close();
 		return null;

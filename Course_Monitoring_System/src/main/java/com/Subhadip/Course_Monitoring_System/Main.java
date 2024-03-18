@@ -18,7 +18,7 @@ public class Main {
 		while(flag) {
 			System.out.println("Enter 1 for Admin");
 			System.out.println("Enter 2 for Faculty");
-			System.out.println("Enter 100 for Exit");
+			System.out.println("Enter 10 for Exit");
 			
 			int choice = sc.nextInt();
 			
@@ -82,6 +82,10 @@ public class Main {
 							
 						adao.updateCourse(id, name, fees, desc);
 						break;
+					case 53:
+						System.out.println("All details of course");
+						adao.viewCourse();
+						break;
 					case 100:
 						flag = false;
 						break;
@@ -105,7 +109,7 @@ public class Main {
 					break;
 					
 				}
-			case 3:
+			case 10:
 				flag = false;
 				break;
 			}
