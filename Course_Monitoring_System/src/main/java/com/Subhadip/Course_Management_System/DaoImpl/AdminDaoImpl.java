@@ -6,6 +6,7 @@ import javax.persistence.Query;
 import com.Subhadip.Course_Management_System.Dao.AdminDao;
 import com.Subhadip.Course_Management_System.Exception.AdminException;
 import com.Subhadip.Course_Management_System.Models.Admin;
+import com.Subhadip.Course_Management_System.Models.Course;
 import com.Subhadip.Course_Monitoring_System.Utiliy.Dao;
 
 public class AdminDaoImpl implements AdminDao{
@@ -41,6 +42,32 @@ public class AdminDaoImpl implements AdminDao{
         } finally {
             em.close();
         }
+	}
+
+	@Override
+	public String createCourse(Course c) {
+		// TODO Auto-generated method stub
+		EntityManager em = Dao.provideConnection();
+		em.getTransaction().begin();
+		em.persist(c);
+		em.getTransaction().commit();
+		em.close();
+		
+		return "Data get inserted";
+	}
+
+	@Override
+	public String updateCourse(int id, String newName, int newFees, String newDesc) {
+		// TODO Auto-generated method stub
+		EntityManager em = Dao.provideConnection();
+		em.getTransaction().begin();
+		Course update = em.find(Course.class, id);
+		update.setName(newName);
+		update.setFees(newFees);
+		update.setDescription(newDesc);
+		em.getTransaction().commit();
+		em.close();
+		return null;
 	}
 
 }

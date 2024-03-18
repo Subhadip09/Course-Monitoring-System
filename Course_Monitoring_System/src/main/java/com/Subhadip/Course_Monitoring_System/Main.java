@@ -6,6 +6,7 @@ import com.Subhadip.Course_Management_System.Dao.AdminDao;
 import com.Subhadip.Course_Management_System.DaoImpl.AdminDaoImpl;
 import com.Subhadip.Course_Management_System.Exception.AdminException;
 import com.Subhadip.Course_Management_System.Models.Admin;
+import com.Subhadip.Course_Management_System.Models.Course;
 
 public class Main {
 	private static Scanner sc = new Scanner(System.in);
@@ -40,7 +41,51 @@ public class Main {
 					String password = sc.next();
 					adao.loginAdmin(username, password);
 					
-					System.out.println("system");
+					System.out.println("Enter 51 for create course");
+					System.out.println("Enter 52 for update course");
+					System.out.println("Enter 53 for view course");
+					System.out.println("Enter 100 for exit");
+					
+					int choice2 = sc.nextInt();
+					
+					switch(choice2)
+					{
+					case 51:
+						System.out.println("Enter course id");
+						int courseId = sc.nextInt();
+						
+						System.out.println("Enter course name");
+						String courseName = sc.next();
+						
+						System.out.println("Enter course fees");
+						int courseFees = sc.nextInt();
+						
+						System.out.println("Enter course description");
+						String courseDescription = sc.next();
+						
+						Course c = new Course(courseId, courseName, courseFees, courseDescription);
+							
+						adao.createCourse(c);
+						break;
+					case 52:
+						System.out.println("Enter course id");
+						int id = sc.nextInt();
+						
+						System.out.println("Enter new course name");
+						String name = sc.next();
+						
+						System.out.println("Enter new course fees");
+						int fees = sc.nextInt();
+						
+						System.out.println("Enter new course description");
+						String desc = sc.next();
+							
+						adao.updateCourse(id, name, fees, desc);
+						break;
+					case 100:
+						flag = false;
+						break;
+					}
 					break;
 					
 				case 12:
