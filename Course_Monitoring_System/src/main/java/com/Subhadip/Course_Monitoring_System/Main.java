@@ -6,7 +6,9 @@ import com.Subhadip.Course_Management_System.Dao.AdminDao;
 import com.Subhadip.Course_Management_System.DaoImpl.AdminDaoImpl;
 import com.Subhadip.Course_Management_System.Exception.AdminException;
 import com.Subhadip.Course_Management_System.Models.Admin;
+import com.Subhadip.Course_Management_System.Models.Batch;
 import com.Subhadip.Course_Management_System.Models.Course;
+import com.Subhadip.Course_Management_System.Models.Faculty;
 
 public class Main {
 	private static Scanner sc = new Scanner(System.in);
@@ -41,16 +43,20 @@ public class Main {
 					String password = sc.next();
 					adao.loginAdmin(username, password);
 					
-					System.out.println("Enter 51 for create course");
-					System.out.println("Enter 52 for update course");
-					System.out.println("Enter 53 for view course");
+					System.out.println("Enter 1 for create course");
+					System.out.println("Enter 2 for update course");
+					System.out.println("Enter 3 for view course");
+					System.out.println("Enter 4 for create batch under a course");
+					System.out.println("Enter 10 for create faculty");
+					System.out.println("Enter 11 for update faculty");
+					System.out.println("Enter 12 for view faculty");
 					System.out.println("Enter 100 for exit");
 					
 					int choice2 = sc.nextInt();
 					
 					switch(choice2)
 					{
-					case 51:
+					case 1:
 						System.out.println("Enter course id");
 						int courseId = sc.nextInt();
 						
@@ -67,7 +73,7 @@ public class Main {
 							
 						adao.createCourse(c);
 						break;
-					case 52:
+					case 2:
 						System.out.println("Enter course id");
 						int id = sc.nextInt();
 						
@@ -82,9 +88,85 @@ public class Main {
 							
 						adao.updateCourse(id, name, fees, desc);
 						break;
-					case 53:
+					case 3:
 						System.out.println("All details of course");
 						adao.viewCourse();
+						break;
+					case 4:
+						System.out.println("Enter batch id");
+						int batchId = sc.nextInt();
+						
+						System.out.println("Enter course id");
+						int cId = sc.nextInt();
+						
+						System.out.println("Enter faculty id");
+						int fId = sc.nextInt();
+						
+						System.out.println("Enter no of student in the batch");
+						int noOfStu = sc.nextInt();
+						
+						System.out.println("Enter batch start date");
+						String startdate = sc.next();
+						
+						System.out.println("Enter batch duration");
+						String duration = sc.next();
+						
+						//Batch b = new Batch(batchId, cId, fId, noOfStu, startdate, duration);
+					case 10:
+						System.out.println("Enter faculty id");
+						int facId = sc.nextInt();
+						
+						System.out.println("Enter faculty name");
+						String facName = sc.next();
+						
+						System.out.println("Enter faculty address");
+						String facAddress = sc.next();
+						
+						System.out.println("Enter faculty mobile no");
+						String facMobile = sc.next();
+						
+						System.out.println("Enter faculty email id");
+						String facEmail = sc.next();
+						
+						System.out.println("Enter faculty username");
+						String facUsername = sc.next();
+						
+						System.out.println("Enter faculty password");
+						String facPassword = sc.next();
+						
+						Faculty f = new Faculty(facId, facName, facAddress, facMobile, facEmail, facUsername, facPassword);
+						
+						adao.createFaculty(f);
+						
+						break;
+					case 11:
+						System.out.println("Enter faculty id");
+						int faId = sc.nextInt();
+						
+						System.out.println("Enter new faculty name");
+						String newName = sc.next();
+						
+						System.out.println("Enter new faculty address");
+						String newAddress = sc.next();
+						
+						System.out.println("Enter new faculty mobile no");
+						String newMobile = sc.next();
+						
+						System.out.println("Enter new faculty email id");
+						String newEmail = sc.next();
+						
+						System.out.println("Enter new faculty username");
+						String newUsername = sc.next();
+						
+						System.out.println("Enter new faculty password");
+						String newPassword = sc.next();
+						
+						adao.updateFaculty(faId, newName, newAddress, newMobile, newEmail, newUsername, newPassword);
+						
+						break;
+					case 12:
+						System.out.println("All details of faculty");
+						adao.viewFaculty();
 						break;
 					case 100:
 						flag = false;

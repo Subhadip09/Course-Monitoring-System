@@ -5,10 +5,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.hibernate.engine.jdbc.batch.spi.Batch;
+
 import com.Subhadip.Course_Management_System.Dao.AdminDao;
 import com.Subhadip.Course_Management_System.Exception.AdminException;
 import com.Subhadip.Course_Management_System.Models.Admin;
 import com.Subhadip.Course_Management_System.Models.Course;
+import com.Subhadip.Course_Management_System.Models.Faculty;
 import com.Subhadip.Course_Monitoring_System.Utiliy.Dao;
 
 public class AdminDaoImpl implements AdminDao{
@@ -69,7 +72,7 @@ public class AdminDaoImpl implements AdminDao{
 		update.setDescription(newDesc);
 		em.getTransaction().commit();
 		em.close();
-		return null;
+		return "data get updated";
 	}
 
 	@Override
@@ -84,6 +87,66 @@ public class AdminDaoImpl implements AdminDao{
 		for(Course c : list)
 		{
 			System.out.println(c);
+		}
+		em.getTransaction().commit();
+		em.close();
+		return null;
+	}
+
+	@Override
+	public String createBatch(Batch b) {
+		// TODO Auto-generated method stub
+		EntityManager em = Dao.provideConnection();
+		em.getTransaction().begin();
+		em.persist(b);
+		em.getTransaction().commit();
+		em.close();
+		
+		return "data get inserted";
+	}
+
+	@Override
+	public String createFaculty(Faculty f) {
+		// TODO Auto-generated method stub
+		EntityManager em = Dao.provideConnection();
+		em.getTransaction().begin();
+		em.persist(f);
+		em.getTransaction().commit();
+		em.close();
+		
+		return "data get inserted";
+	}
+
+	@Override
+	public String updateFaculty(int faId, String newName, String newAddress, String newMobile, String newEmail,
+			String newUsername, String newPassword) {
+		// TODO Auto-generated method stub
+		EntityManager em = Dao.provideConnection();
+		em.getTransaction().begin();
+		Faculty update = em.find(Faculty.class, faId);
+		update.setName(newName);
+		update.setAddress(newAddress);
+		update.setMobileNo(newMobile);
+		update.setEmail(newEmail);
+		update.setUsername(newUsername);
+		update.setPassword(newPassword);
+		em.getTransaction().commit();
+		em.close();
+		return "data get updated";
+	}
+
+	@Override
+	public List<Faculty> viewFaculty() {
+		// TODO Auto-generated method stub
+		EntityManager em = Dao.provideConnection();
+		em.getTransaction().begin();
+		
+		Query query = em.createQuery("select f from Faculty f");
+		List<Faculty> list = query.getResultList();
+		
+		for(Faculty f : list)
+		{
+			System.out.println(f);
 		}
 		em.getTransaction().commit();
 		em.close();
