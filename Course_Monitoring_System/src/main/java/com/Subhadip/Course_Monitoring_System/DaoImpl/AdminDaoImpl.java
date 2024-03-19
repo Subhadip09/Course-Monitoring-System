@@ -1,17 +1,16 @@
-package com.Subhadip.Course_Management_System.DaoImpl;
+package com.Subhadip.Course_Monitoring_System.DaoImpl;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.hibernate.engine.jdbc.batch.spi.Batch;
-
-import com.Subhadip.Course_Management_System.Dao.AdminDao;
-import com.Subhadip.Course_Management_System.Exception.AdminException;
-import com.Subhadip.Course_Management_System.Models.Admin;
-import com.Subhadip.Course_Management_System.Models.Course;
-import com.Subhadip.Course_Management_System.Models.Faculty;
+import com.Subhadip.Course_Monitoring_System.Dao.AdminDao;
+import com.Subhadip.Course_Monitoring_System.Exception.AdminException;
+import com.Subhadip.Course_Monitoring_System.Models.Admin;
+import com.Subhadip.Course_Monitoring_System.Models.Batch;
+import com.Subhadip.Course_Monitoring_System.Models.Course;
+import com.Subhadip.Course_Monitoring_System.Models.Faculty;
 import com.Subhadip.Course_Monitoring_System.Utiliy.Dao;
 
 public class AdminDaoImpl implements AdminDao{

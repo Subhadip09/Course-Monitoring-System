@@ -1,4 +1,4 @@
-package com.Subhadip.Course_Management_System.Exception;
+package com.Subhadip.Course_Monitoring_System.Exception;
 
 public class AdminException extends Exception{
 

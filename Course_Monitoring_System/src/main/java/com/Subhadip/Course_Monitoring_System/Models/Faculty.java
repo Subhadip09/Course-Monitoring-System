@@ -1,4 +1,4 @@
-package com.Subhadip.Course_Management_System.Models;
+package com.Subhadip.Course_Monitoring_System.Models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -79,6 +79,13 @@ public class Faculty {
 	public Faculty() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public Faculty(int id, String name)
+	{
+		super();
+		this.id = id;
+		this.name = name;
 	}
 
 	public Faculty(int id, String name, String address, String mobileNo, String email, String username,

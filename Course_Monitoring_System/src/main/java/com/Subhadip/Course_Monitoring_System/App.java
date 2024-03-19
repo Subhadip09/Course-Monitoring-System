@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.Subhadip.Course_Management_System.Models.Admin;
+import com.Subhadip.Course_Monitoring_System.Models.Admin;
 
 /**
  * Hello world!

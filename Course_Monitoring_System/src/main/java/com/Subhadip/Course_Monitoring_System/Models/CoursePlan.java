@@ -1,4 +1,4 @@
-package com.Subhadip.Course_Management_System.Models;
+package com.Subhadip.Course_Monitoring_System.Models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

@@ -1,4 +1,4 @@
-package com.Subhadip.Course_Management_System.Models;
+package com.Subhadip.Course_Monitoring_System.Models;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,10 +13,10 @@ public class Batch {
 	private int id;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Course courseId;
+	private Course course;
 	
-	@OneToOne
-	private Faculty facultyId;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Faculty faculty;
 	
 	private int noOfStudents;
 	
@@ -32,20 +32,20 @@ public class Batch {
 		this.id = id;
 	}
 
-	public Course getCourseId() {
-		return courseId;
+	public Course getCourse() {
+		return course;
 	}
 
-	public void setCourseId(Course courseId) {
-		this.courseId = courseId;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
-	public Faculty getFacultyId() {
-		return facultyId;
+	public Faculty getFaculty() {
+		return faculty;
 	}
 
-	public void setFacultyId(Faculty facultyId) {
-		this.facultyId = facultyId;
+	public void setFaculty(Faculty faculty) {
+		this.faculty = faculty;
 	}
 
 	public int getNoOfStudents() {
@@ -77,9 +77,11 @@ public class Batch {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Batch(int id, int noOfStudents, String batchStartDate, String duration) {
+	public Batch(int id, Course course, Faculty faculty, int noOfStudents, String batchStartDate, String duration) {
 		super();
 		this.id = id;
+		this.course = course;
+		this.faculty = faculty;
 		this.noOfStudents = noOfStudents;
 		this.batchStartDate = batchStartDate;
 		this.duration = duration;
@@ -87,9 +89,7 @@ public class Batch {
 
 	@Override
 	public String toString() {
-		return "Batch [id=" + id + ", noOfStudents=" + noOfStudents + ", batchStartDate=" + batchStartDate
-				+ ", duration=" + duration + "]";
+		return "Batch [id=" + id + ", course=" + course + ", faculty=" + faculty + ", noOfStudents=" + noOfStudents
+				+ ", batchStartDate=" + batchStartDate + ", duration=" + duration + "]";
 	}
-	
-	
 }

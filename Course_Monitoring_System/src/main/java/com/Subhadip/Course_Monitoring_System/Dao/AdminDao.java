@@ -1,13 +1,12 @@
-package com.Subhadip.Course_Management_System.Dao;
+package com.Subhadip.Course_Monitoring_System.Dao;
 
 import java.util.List;
 
-import org.hibernate.engine.jdbc.batch.spi.Batch;
-
-import com.Subhadip.Course_Management_System.Exception.AdminException;
-import com.Subhadip.Course_Management_System.Models.Admin;
-import com.Subhadip.Course_Management_System.Models.Course;
-import com.Subhadip.Course_Management_System.Models.Faculty;
+import com.Subhadip.Course_Monitoring_System.Exception.AdminException;
+import com.Subhadip.Course_Monitoring_System.Models.Admin;
+import com.Subhadip.Course_Monitoring_System.Models.Batch;
+import com.Subhadip.Course_Monitoring_System.Models.Course;
+import com.Subhadip.Course_Monitoring_System.Models.Faculty;
 
 public interface AdminDao {
 	public String createAdmin(Admin a);
