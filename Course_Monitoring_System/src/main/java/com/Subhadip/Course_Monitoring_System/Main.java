@@ -53,17 +53,17 @@ public class Main {
 					System.out.println("Enter 2 for update course");
 					System.out.println("Enter 3 for view course");
 					System.out.println("Enter 4 for create batch under a course");
-					System.out.println("Enter 5 ");
-					System.out.println("Enter 6 ");
+//					System.out.println("Enter 5 ");
+//					System.out.println("Enter 6 ");
 					System.out.println("Enter 7 for create faculty");
 					System.out.println("Enter 8 for update faculty");
 					System.out.println("Enter 9 for view faculty");
-					System.out.println("Enter 10");
-					System.out.println("Enter 11");
-					System.out.println("Enter 12");
-					System.out.println("Enter 13");
-					System.out.println("Enter 14");
-					System.out.println("Enter 15");
+//					System.out.println("Enter 10");
+//					System.out.println("Enter 11");
+//					System.out.println("Enter 12");
+//					System.out.println("Enter 13");
+//					System.out.println("Enter 14");
+//					System.out.println("Enter 15");
 					System.out.println("Enter 0 for exit");
 					
 					int choice2 = sc.nextInt();
@@ -141,12 +141,12 @@ public class Main {
 						
 						adao.createBatch(b);
 						break;
-					case 5:
-						//update batch
-						break;
-					case 6:
-						//view batch
-						break;
+//					case 5:
+//						//update batch
+//						break;
+//					case 6:
+//						//view batch
+//						break;
 					case 7:
 						System.out.println("Enter faculty id");
 						int facId = sc.nextInt();
@@ -203,24 +203,24 @@ public class Main {
 						System.out.println("All details of faculty");
 						adao.viewFaculty();
 						break;
-					case 10:
-						// allocate faculty to a batch
-						break;
-					case 11:
-						// create course plan
-						break;
-					case 12:
-						// update course plan
-						break;
-					case 13:
-						// view course plan
-						break;
-					case 14:
-						// view day wise update of every batch
-						break;
-					case 15:
-						// generate report for every batch
-						break;
+//					case 10:
+//						// allocate faculty to a batch
+//						break;
+//					case 11:
+//						// create course plan
+//						break;
+//					case 12:
+//						// update course plan
+//						break;
+//					case 13:
+//						// view course plan
+//						break;
+//					case 14:
+//						// view day wise update of every batch
+//						break;
+//					case 15:
+//						// generate report for every batch
+//						break;
 					case 0:
 						flag = false;
 						break;
@@ -263,21 +263,21 @@ public class Main {
 					
 					System.out.println("You have logged in successfully");
 					
-					System.out.println("Enter 1 for view course plan");
-					System.out.println("Enter 2 for fill day wise plan");
-					System.out.println("Enter 3 for update password");
+//					System.out.println("Enter 1 for view course plan");
+//					System.out.println("Enter 2 for fill day wise plan");
+					System.out.println("Enter 1 for update password");
 					
 					int choice3 = sc.nextInt();
 					
 					switch(choice3)
 					{
+//					case 1:
+//						//view course plan
+//						break;
+//					case 2:
+//						//fill day wise plan
+//						break;
 					case 1:
-						//view course plan
-						break;
-					case 2:
-						//fill day wise plan
-						break;
-					case 3:
 						System.out.println("Enter your id");
 						int id = sc.nextInt();
 						
