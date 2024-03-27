@@ -9,9 +9,9 @@ import com.Subhadip.Course_Monitoring_System.Models.Faculty;
 public interface FacultyDao {
 	public Faculty loginFaculty(String username, String password);
 	
-	public List<CoursePlan> viewCoursePlan();
+	public String createCoursePlan(int planId, int batchId, int dayNumber, String topic, String status);
 	
-	public String fillDayWisePlan();
+	public List<CoursePlan> viewCoursePlan();
 	
 	public String updatePassword(int id, String newPassword);
 }

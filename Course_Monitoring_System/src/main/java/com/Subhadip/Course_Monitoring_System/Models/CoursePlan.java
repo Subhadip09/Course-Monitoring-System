@@ -2,7 +2,9 @@ package com.Subhadip.Course_Monitoring_System.Models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class CoursePlan {
@@ -10,6 +12,8 @@ public class CoursePlan {
 	private int planId;
 	
 	@OneToOne
+	@JoinColumn(name = "batchId")
+	@Transient
 	private Batch batchId;
 	
 	private int dayNumber;

@@ -1,15 +1,18 @@
 package com.Subhadip.Course_Monitoring_System.DaoImpl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import com.Subhadip.Course_Monitoring_System.Dao.AdminDao;
 import com.Subhadip.Course_Monitoring_System.Exception.AdminException;
 import com.Subhadip.Course_Monitoring_System.Models.Admin;
 import com.Subhadip.Course_Monitoring_System.Models.Batch;
 import com.Subhadip.Course_Monitoring_System.Models.Course;
+import com.Subhadip.Course_Monitoring_System.Models.CoursePlan;
 import com.Subhadip.Course_Monitoring_System.Models.Faculty;
 import com.Subhadip.Course_Monitoring_System.Utiliy.Dao;
 
@@ -93,15 +96,85 @@ public class AdminDaoImpl implements AdminDao{
 	}
 
 	@Override
-	public String createBatch(Batch b) {
+	public String createBatch(int batchId, int courseId, int facultyId, int noOfStudents, String startDate,
+			String duration) {
 		// TODO Auto-generated method stub
 		EntityManager em = Dao.provideConnection();
 		em.getTransaction().begin();
-		em.persist(b);
+		Course course = em.find(Course.class, courseId);
+		Faculty faculty = em.find(Faculty.class, facultyId);
+		Batch batch = new Batch();
+		batch.setId(batchId);
+		batch.setCourseId(course);
+        batch.setFacultyId(faculty);
+        batch.setNoOfStudents(noOfStudents);
+        batch.setBatchStartDate(startDate);
+        batch.setDuration(duration);
+        em.persist(batch);
+        em.getTransaction().commit();
+		em.close();
+		return null;
+	}
+	
+//	@Override
+//	public String createBatch(Batch b) {
+//		// TODO Auto-generated method stub
+//		EntityManager em = Dao.provideConnection();
+//		em.getTransaction().begin();
+//		em.persist(b);
+//		em.getTransaction().commit();
+//		em.close();
+//		
+//		return "data get inserted";
+//	}
+	
+	@Override
+	public String updateBatch(int id, int couId, int facId, String batchStartDate, String batchDuration, int noOfStudents) {
+		// TODO Auto-generated method stub
+		EntityManager em = Dao.provideConnection();
+		em.getTransaction().begin();
+		
+		Course course = em.find(Course.class, couId);
+		Faculty faculty = em.find(Faculty.class, facId);
+		Batch update = em.find(Batch.class, id);
+		update.setCourseId(course);
+		update.setFacultyId(faculty);
+		update.setBatchStartDate(batchStartDate);
+		update.setDuration(batchDuration);
+		update.setNoOfStudents(noOfStudents);
 		em.getTransaction().commit();
 		em.close();
+		return "data get updated";
+	}
+	
+	@Override
+	public List<Batch> viewBatch() {
+		// TODO Auto-generated method stub
+		EntityManager em = Dao.provideConnection();
+		em.getTransaction().begin();
+		try {
+			Query query1 = em.createQuery("select b from Batch b");
+			List<Batch> list1 = query1.getResultList();
+			
+//			  String jpql = "SELECT b FROM Batch b WHERE b.courseId = :cid";
+//	          TypedQuery<Batch> query = em.createQuery(jpql, Batch.class);
+	//
+//	          // Execute the query and return the list of batches
+//	          return query.getResultList();
+			
+			
+			for(Batch b : list1)
+			{
+				System.out.println(b);
+			}
+			em.getTransaction().commit();
+		}
+		finally {
+			em.close();
+		}
 		
-		return "data get inserted";
+		
+		return null;
 	}
 
 	@Override
@@ -151,5 +224,27 @@ public class AdminDaoImpl implements AdminDao{
 		em.close();
 		return null;
 	}
+
+
+	@Override
+	public List<CoursePlan> viewCoursePlan() {
+		// TODO Auto-generated method stub
+		EntityManager em = Dao.provideConnection();
+		em.getTransaction().begin();
+		
+		Query query = em.createQuery("select cp from CoursePlan cp");
+		List<CoursePlan> list = query.getResultList();
+		
+		for(CoursePlan cp : list)
+		{
+			System.out.println(cp);
+		}
+		em.getTransaction().commit();
+		em.close();
+		
+		return null;
+	}
+
+	
 
 }

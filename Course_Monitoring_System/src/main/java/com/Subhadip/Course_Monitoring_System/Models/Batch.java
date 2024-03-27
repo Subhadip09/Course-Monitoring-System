@@ -1,8 +1,9 @@
 package com.Subhadip.Course_Monitoring_System.Models;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -12,11 +13,13 @@ public class Batch {
 	@Id
 	private int id;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Course course;
+	@ManyToOne
+	@JoinColumn(name = "courseId")
+	private Course courseId;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private Faculty faculty;
+	@OneToOne
+	@JoinColumn(name = "facultyId")
+	private Faculty facultyId;
 	
 	private int noOfStudents;
 	
@@ -32,20 +35,20 @@ public class Batch {
 		this.id = id;
 	}
 
-	public Course getCourse() {
-		return course;
+	public Course getCourseId() {
+		return courseId;
 	}
 
-	public void setCourse(Course course) {
-		this.course = course;
+	public void setCourseId(Course courseId) {
+		this.courseId = courseId;
 	}
 
-	public Faculty getFaculty() {
-		return faculty;
+	public Faculty getFacultyId() {
+		return facultyId;
 	}
 
-	public void setFaculty(Faculty faculty) {
-		this.faculty = faculty;
+	public void setFacultyId(Faculty facultyId) {
+		this.facultyId = facultyId;
 	}
 
 	public int getNoOfStudents() {
@@ -77,11 +80,11 @@ public class Batch {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Batch(int id, Course course, Faculty faculty, int noOfStudents, String batchStartDate, String duration) {
+	public Batch(int id, Course courseId, Faculty facultyId, int noOfStudents, String batchStartDate, String duration) {
 		super();
 		this.id = id;
-		this.course = course;
-		this.faculty = faculty;
+		this.courseId = courseId;
+		this.facultyId = facultyId;
 		this.noOfStudents = noOfStudents;
 		this.batchStartDate = batchStartDate;
 		this.duration = duration;
@@ -89,7 +92,7 @@ public class Batch {
 
 	@Override
 	public String toString() {
-		return "Batch [id=" + id + ", course=" + course + ", faculty=" + faculty + ", noOfStudents=" + noOfStudents
-				+ ", batchStartDate=" + batchStartDate + ", duration=" + duration + "]";
+		return "Batch [id=" + id + ", courseId=" + courseId + ", facultyId=" + facultyId + ", noOfStudents="
+				+ noOfStudents + ", batchStartDate=" + batchStartDate + ", duration=" + duration + "]";
 	}
 }
